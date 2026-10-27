@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+backend/node_modules/
+
+# Variáveis de ambiente
+.env
+backend/.env
+
+# Prisma generated
+backend/generated/
+
+# Sistema Operacional e Logs
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,233 @@
+/* =====================================================
+   ESTILO: Barbearia - Operador (Clean & Contemporâneo)
+   Cores: Preto, Dourado e Branco (Sem degradês)
+   ===================================================== */
+
+:root {
+    --bg-fundo: #0d0d0d;
+    --bg-card: #161616;
+    --bg-input: #1f1f1f;
+    --cor-dourado: #c5a059;
+    --cor-dourado-hover: #d6b16d;
+    --cor-dourado-escuro: #8f7238;
+    --cor-branco: #ffffff;
+    --cor-cinza-claro: #cfcfcf;
+    --cor-cinza-medio: #8c8c8c;
+    --borda-suave: #2a2a2a;
+    --fonte-principal: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --fonte-destaque: 'Cinzel', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg-fundo);
+    font-family: var(--fonte-principal);
+    color: var(--cor-branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Container do Card Principal */
+.login-cadastro {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--borda-suave);
+    border-radius: 12px;
+    padding: 40px 36px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Cabeçalho do Card */
+.cabecalho-card {
+    text-align: center;
+    border-bottom: 1px solid var(--borda-suave);
+    padding-bottom: 20px;
+}
+
+.cabecalho-card .tag-operador {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--cor-dourado);
+    margin-bottom: 8px;
+}
+
+.cabecalho-card h1 {
+    font-family: var(--fonte-destaque);
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--cor-branco);
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--cor-cinza-claro);
+    margin-bottom: -10px;
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    background-color: var(--bg-input);
+    border: 1px solid var(--borda-suave);
+    border-radius: 8px;
+    padding: 13px 16px;
+    font-size: 0.95rem;
+    color: var(--cor-branco);
+    font-family: var(--fonte-principal);
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: var(--cor-dourado);
+    background-color: #242424;
+}
+
+input::placeholder {
+    color: #555555;
+    font-size: 0.9rem;
+}
+
+/* Campo com botão de senha */
+.campo-senha {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-senha input {
+    padding-right: 50px;
+}
+
+.campo-senha .btn-ver-senha {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: opacity 0.2s ease;
+}
+
+.campo-senha .btn-ver-senha:hover {
+    opacity: 1;
+}
+
+.campo-senha .btn-ver-senha img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Deixa o ícone nítido em branco */
+    opacity: 0.75;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.campo-senha .btn-ver-senha:hover img {
+    opacity: 1;
+    filter: brightness(0) invert(0.8) sepia(1) saturate(5) hue-rotate(5deg); /* Toque dourado sutil no hover */
+}
+
+/* Botões de Ação Principal (Cadastrar / Login) */
+#btnCadastrar,
+#btnLogarLogar {
+    background-color: var(--cor-dourado);
+    color: #0d0d0d;
+    border: 1px solid var(--cor-dourado);
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+#btnCadastrar:hover,
+#btnLogarLogar:hover {
+    background-color: var(--cor-dourado-hover);
+    border-color: var(--cor-dourado-hover);
+}
+
+#btnCadastrar:active,
+#btnLogarLogar:active {
+    transform: scale(0.99);
+}
+
+/* Botão Alternar Conta (Rodapé) */
+.rodape-alternar {
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px solid var(--borda-suave);
+}
+
+#btn-ja-tem-conta {
+    background: transparent;
+    border: none;
+    color: var(--cor-cinza-claro);
+    font-size: 0.88rem;
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: color 0.2s ease;
+}
+
+#btn-ja-tem-conta:hover {
+    color: var(--cor-dourado);
+    text-decoration: underline;
+}
+
+/* Ocultação nativa respeitando display */
+[hidden] {
+    display: none !important;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .login-cadastro {
+        padding: 30px 20px;
+    }
+
+    .cabecalho-card h1 {
+        font-size: 1.4rem;
+    }
+}

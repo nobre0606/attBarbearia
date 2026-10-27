@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia | Acesso Operador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="frontend/css/style.css">
+</head>
+<body>
+    <main class="login-cadastro">
+        <header class="cabecalho-card">
+            <span class="tag-operador">Operador</span>
+            <h1 id="tituloCard">Criar Conta</h1>
+        </header>
+
+        <section class="cadastro" id="sectionCadastro">
+            <form id="formCadastro">
+                <label for="nomeCadastro">Nome</label>
+                <input type="text" name="nome" id="nomeCadastro" placeholder="Seu nome completo" required>
+
+                <label for="emailCadastro">E-mail</label>
+                <input type="email" name="email" id="emailCadastro" placeholder="operador@barbearia.com" required>
+
+                <label for="senhaCadastro">Senha</label>
+                <div class="campo-senha">
+                    <input type="password" name="senha" id="senhaCadastro" placeholder="••••••••" required>
+                    <button type="button" id="btn-ver-senha-Cadastro" class="btn-ver-senha" aria-label="Mostrar ou ocultar senha">
+                        <img src="frontend/imagens/iconeVerSenha.png" alt="Mostrar Senha" id="imgSenhaCadastro">
+                    </button>
+                </div>
+
+                <button type="submit" id="btnCadastrar">Cadastrar</button>
+            </form>
+        </section>
+
+        <section class="login" id="sectionLogin" hidden>
+            <form id="formLogin">
+                <label for="emailLogin">E-mail</label>
+                <input type="email" name="email" id="emailLogin" placeholder="operador@barbearia.com" required>
+
+                <label for="senhaLogin">Senha</label>
+                <div class="campo-senha">
+                    <input type="password" name="senha" id="senhaLogin" placeholder="••••••••" required>
+                    <button type="button" id="btn-ver-senha-Login" class="btn-ver-senha" aria-label="Mostrar ou ocultar senha">
+                        <img src="frontend/imagens/iconeVerSenha.png" alt="Mostrar Senha" id="imgSenhaLogin">
+                    </button>
+                </div>
+
+                <button type="submit" id="btnLogarLogar">Login</button>
+            </form>
+        </section>
+
+        <footer class="rodape-alternar">
+            <button type="button" id="btn-ja-tem-conta">Já tem uma conta? Faça login</button>
+        </footer>
+    </main>
+
+    <script src="frontend/js/script.js"></script>
+</body>
+</html>

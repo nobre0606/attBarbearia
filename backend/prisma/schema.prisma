@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Usuario {
+  idUsuario Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  senhaHash String
+  criadoEm  DateTime @default(now())
+}
+
+model Cliente {
+  idCliente Int      @id @default(autoincrement())
+  nome      String
+  telefone  String   @unique
+  email     String?  @unique        // opcional: nem todo cliente tem email
+  cpf       String                  // cifrado com AES (texto cifrado + IV)
+  cpfHash   String   @unique        // HMAC do CPF, só para impedir duplicidade
+  criadoEm  DateTime @default(now())
+
+  agendamentos Agendamento[]
+}
+
+model Barbeiro {
+  idBarbeiro Int      @id @default(autoincrement())
+  nome       String
+  email      String   @unique
+  telefone   String   @unique
+  cpf        String                 // cifrado com AES
+  cpfHash    String   @unique       // HMAC do CPF
+  criadoEm   DateTime @default(now())
+
+  agendamentos Agendamento[]
+}
+
+model Servico {
+  idServico  Int      @id @default(autoincrement())
+  nome       String   @unique
+  preco      Decimal  @db.Decimal(10, 2)
+  duracaoMin Int
+  criadoEm   DateTime @default(now())
+
+  agendamentos Agendamento[]
+}
+
+model Agendamento {
+  idAgendamento Int      @id @default(autoincrement())
+  idCliente     Int
+  idBarbeiro    Int
+  idServico     Int
+  horario       DateTime
+  criadoEm      DateTime @default(now())
+
+  cliente  Cliente  @relation(fields: [idCliente], references: [idCliente], onDelete: Restrict)
+  barbeiro Barbeiro @relation(fields: [idBarbeiro], references: [idBarbeiro], onDelete: Restrict)
+  servico  Servico  @relation(fields: [idServico], references: [idServico], onDelete: Restrict)
+
+  // Mesmo barbeiro não pode ter dois atendimentos no mesmo horário
+  @@unique([idBarbeiro, horario])
+  @@index([horario])
+}
